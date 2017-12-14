@@ -1,0 +1,7 @@
+# .gitignore
+
+.DS_Store
+.idea/
+/screenshots/*.png
+/reports/*.html
+/reports/*.json
