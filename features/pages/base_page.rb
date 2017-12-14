@@ -41,34 +41,6 @@ class BasePage
     end
   end
 
-  def find_by_id(id)
-    @wait.until do
-      element = @web_driver.find_element :id, id
-      element if element.displayed?
-    end
-  end
-
-  def find_by_css(css_selector)
-    @wait.until do
-      element = @web_driver.find_element :css, css_selector
-      element if element.displayed?
-    end
-  end
-
-  def find_all_by_css(css_selector)
-    @wait.until do
-      elements = @web_driver.find_elements :css, css_selector
-      elements if elements.all? {|element| element.displayed?}
-    end
-  end
-
-  def find_by_xpath(xpath_query)
-    @wait.until do
-      element = @web_driver.find_element :xpath, xpath_query
-      element if element.displayed?
-    end
-  end
-
   def element_exist?(locator_hash)
     locator = locator_hash.keys.first
     query = locator_hash.values.first

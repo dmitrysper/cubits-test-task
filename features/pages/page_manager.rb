@@ -1,9 +1,5 @@
 class PageManager < BasePage
 
-  def react_todo_page
-    @react_todo_page ||= ReactTodoPage.new(@web_driver)
-  end
-
   def start_page
     @start_page ||= StartPage.new(@web_driver)
   end
