@@ -1,0 +1,9 @@
+app_config:
+  base_url: 'https://cubits.com'
+
+user:
+  valid:
+    email: 'ZG1zcGVyYW5za3lAZ21haWwuY29t'
+    password: 'VktFI2VqZCFfeA=='
+  user_name: 'RG1pdHJpaSBTcGVyYW5za2lp'
+
