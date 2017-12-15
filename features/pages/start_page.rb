@@ -1,7 +1,7 @@
 class StartPage < BasePage
 
   def page_trait
-    { css: '.nav__login a.nav__link' }
+    { css: "a[href $= 'sign_in']" }
   end
 
   def open_login_page

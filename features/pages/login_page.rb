@@ -5,15 +5,21 @@ class LoginPage < BasePage
   end
 
   def enter_email(email)
+    email_input.clear
     email_input.send_keys email
   end
 
   def enter_password(password)
+    password_input.clear
     password_input.send_keys password
   end
 
   def do_login
     login_button.click
+  end
+
+  def get_alert_text
+    get_element_text alert_span
   end
 
   private
@@ -32,6 +38,11 @@ class LoginPage < BasePage
 
   def login_button
     locator = { css: "button[type='submit']" }
+    find_by_locator locator
+  end
+
+  def alert_span
+    locator = { css: 'span.alert-msg.title' }
     find_by_locator locator
   end
 

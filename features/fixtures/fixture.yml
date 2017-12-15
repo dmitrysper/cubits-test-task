@@ -5,5 +5,11 @@ user:
   valid:
     email: 'ZG1zcGVyYW5za3lAZ21haWwuY29t'
     password: 'VktFI2VqZCFfeA=='
+  invalid:
+    email: 'someguy@mail.com'
+    password: 'QWErty123'
+  blank:
+    email: ''
+    password: ''
   user_name: 'RG1pdHJpaSBTcGVyYW5za2lp'
 
