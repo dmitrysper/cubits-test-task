@@ -1,4 +1,3 @@
-# describing Dromedary rake tasks
 desc 'Rake task to run Cucumber/Selenium tests'
 task :start_test_run, [:browser, :tag] do |task, args|
   args.with_defaults(browser: 'chrome', tag: '')
