@@ -4,6 +4,6 @@
 <% common_settings = "--format pretty --format html --out ./reports/test_report.html --format json --out ./reports/test_report.json" %>
 
 #---- Cubits Tests ----
-cubits.tests.base: <%= common_settings %> FIXTURE_FILE='./features/fixtures/fixture.yml' -t @test_suite
-cubits.tests.firefox: -p cubits.tests.base BROWSER='firefox'
-cubits.tests.chrome: -p cubits.tests.base BROWSER='chrome' DRIVER_PATH='./drivers/chrome'
+cubits.tests.base: <%= common_settings %> FIXTURE_FILE='./features/fixtures/fixture.yml'
+cubits.tests.firefox: BROWSER='firefox' DRIVER_PATH='./drivers/firefox' -p cubits.tests.base -t @test_suite
+cubits.tests.chrome: BROWSER='chrome' DRIVER_PATH='./drivers/chrome' -p cubits.tests.base -t @test_suite

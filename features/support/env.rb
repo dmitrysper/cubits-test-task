@@ -6,6 +6,9 @@ IMPLICIT_WAIT = 15
 CHROME = 'chrome'
 FIREFOX = 'firefox'
 
+CHROMEDRIVER = 'chromedriver'
+GECKODRIVER = 'geckodriver'
+
 MACOS = 'darwin'
 LINUX = 'linux'
 
@@ -20,22 +23,23 @@ After do
 end
 
 def start_browser(browser_name, driver_path = '')
+  full_driver_path = driver_path
+  driver_name = browser_name == CHROME ? CHROMEDRIVER : GECKODRIVER
+  case get_system_info
+    when MACOS
+      full_driver_path = "#{driver_path}/osx/#{driver_name}"
+    when LINUX
+      full_driver_path = "#{driver_path}/linux/#{driver_name}"
+    else
+      fail 'Unsupported platform!'
+  end
   case browser_name
     when FIREFOX
-      profile = Selenium::WebDriver::Firefox::Profile.new
-      profile.native_events = true
-      Selenium::WebDriver.for browser_name.to_sym, profile: profile
+      caps = Selenium::WebDriver::Remote::Capabilities.firefox
+      Selenium::WebDriver::Firefox.driver_path = full_driver_path
+      Selenium::WebDriver.for browser_name.to_sym, desired_capabilities: caps
     when CHROME
-      full_driver_path = driver_path
       caps = Selenium::WebDriver::Remote::Capabilities.chrome
-      case get_system_info
-        when MACOS
-          full_driver_path = driver_path + '/osx/chromedriver'
-        when LINUX
-          full_driver_path = driver_path + '/linux/chromedriver'
-        else
-          fail 'Unsupported platform!'
-      end
       Selenium::WebDriver::Chrome.driver_path = full_driver_path
       Selenium::WebDriver.for browser_name.to_sym, desired_capabilities: caps
     else
